@@ -1,0 +1,72 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Users {
+  id            Int    @id @default(autoincrement())
+  user_name     String @unique @db.VarChar(50)
+  user_password String @db.VarChar(100)
+  user_fName    String @db.VarChar(50)
+  user_lName    String @db.VarChar(50)
+  teams         Team[]
+}
+
+model Team {
+  id         Int       @id @default(autoincrement())
+  team_name  String    @db.VarChar(50)
+  trainer_id Int
+  user_id    Users     @relation(fields: [trainer_id], references: [id])
+  pokemons   Pokemon[]
+
+}
+
+model Pokemon {
+  id             Int       @id @unique
+  name           String    @db.VarChar(100)
+  generation     Int?
+  evolutionChain Int?
+  species        String?
+  description    String?
+  stats          Stat[]
+  teams          Team[]
+  type           Type[]
+  abilities      AbilityPokemon[]
+}
+
+model Type {
+  id       Int       @id @default(autoincrement())
+  name     String    @db.VarChar(10)
+  pokemons Pokemon[]
+}
+
+model Stat {
+  id        Int       @id @default(autoincrement())
+  name      String    @db.VarChar(50)
+  value     Int       
+  pokemon   Pokemon   @relation(fields: [pokemonID], references: [id])
+  pokemonID Int
+}
+
+model Ability {
+  id          Int       @id 
+  name        String    @db.VarChar(50)
+  description String
+  generation  String
+  pokemon     AbilityPokemon[]
+ 
+}
+
+model AbilityPokemon{
+  @@id([pokemonID,abilityID])
+  pokemonID  Int
+  pokemon    Pokemon @relation(fields: [pokemonID],references: [id])
+  abilityID  Int
+  isHidden   Boolean @default(false)
+  ability    Ability @relation(fields: [abilityID],references: [id])
+}
+
