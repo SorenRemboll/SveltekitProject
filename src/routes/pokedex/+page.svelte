@@ -1,17 +1,3 @@
-<script context='module'>
-	import { fetchMons, pokemonStoreWriteable } from '/src/stores/pokemonStore.js';
-	import { get } from 'svelte/store';
-	
-	export const load = async() => {
-		await fetchMons();
-		return{
-			status:200,
-			props:{
-				filteredMon: [...get(pokemonStoreWriteable)],
-			}
-		}
-	}
-</script>
 <script>
 	import Card from '$lib/pokemonComps/card.svelte';
 	import TeamViewer from '$lib/teamComps/teamViewer.svelte';

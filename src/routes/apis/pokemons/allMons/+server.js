@@ -1,12 +1,11 @@
 import { prisma } from '$lib/db'
-export const GET = async() => {
+export const GET = async () => {
 	const returnData = await prisma.Pokemon.findMany({
 			include:{
 				type:true
 			}
 		});
-	return {
-		body: { returnData }
-	};
+	return new Response(returnData)
+	
 	
 }
