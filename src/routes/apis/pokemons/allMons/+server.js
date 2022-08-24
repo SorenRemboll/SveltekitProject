@@ -5,7 +5,5 @@ export const GET = async () => {
 				type:true
 			}
 		});
-	return new Response(returnData)
-	
-	
+	return new Response(JSON.stringify(returnData))
 }

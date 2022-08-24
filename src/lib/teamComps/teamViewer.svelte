@@ -1,6 +1,6 @@
 <script>
 	import { teamStoreWriteable } from '/src/stores/teamStore.js';
-	import { session } from '$app/stores';
+	//import { session } from '$app/stores';
 	import { createEventDispatcher } from 'svelte';
 	import {createTeam} from '$lib/createObjInstance/team.js'
 	import TeamBlock from './team-block.svelte';
@@ -25,14 +25,14 @@
 
 	};
 	const saveTeam = async(team) => {
-        const conn = await fetch('/apis/teams/saveTeam',{
+        /* const conn = await fetch('/apis/teams/saveTeam',{
             method:'POST',
             body:JSON.stringify({
                 team,
                 id:$session.payload.user_id,
             })
         });
-        const returnData = await conn.json();
+        const returnData = await conn.json(); */
         //todo: add feedback to users
 		Swal.fire({
 			title:`${team.team_name} is now saved to your profile!`,

@@ -1,18 +1,18 @@
 <script>
-	import { session } from '$app/stores';
+	//import { session } from '$app/stores';
     export let i;
     export let team;
     export let removeFromTeam;
-    export let updateTeamName;
+   /*  export let updateTeamName;
     export let saveTeam;
     export let deleteTeam = '';
-    export let takeToDex = '';
+    export let takeToDex = ''; */
     let editReady = false;
     let newTeamName = team.teamName;
 </script>
 
 <div class="teamWrapper-container relative p-4 mb-4 bg-slate-100 rounded ">
-    {#if !editReady}
+    <!-- {#if !editReady}
         <p on:click={()=>{editReady = !editReady}} class=" cursor-pointer group mb-2">Team Name: <span class=" font-extrabold text-black">{team.team_name}</span><i class=" group-hover:text-green-300 ml-2 transition fas fa-pencil-alt"></i></p>
         {#if $session?.payload}
             {#if takeToDex}
@@ -34,7 +34,7 @@
         <input bind:value={newTeamName} class="newName mb-2 border-b focus:outline-none border-black bg-slate-100" type="text">
          <i on:click={()=>{updateTeamName(i,newTeamName);editReady = !editReady}} class=" fas fa-check"></i>
     </form>
-    {/if}
+    {/if} -->
     <div class="teamWrapper-mons mx-auto grid grid-cols-3 w-80 place-items-end over-x-scroll bg-slate-500">
         {#each team.pokemons as mon}
             <div class="monWrapper w-16 m-2 rounded h-16 flex items-center justify-center relative bg-slate-200 ">

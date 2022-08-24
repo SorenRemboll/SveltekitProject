@@ -1,4 +1,4 @@
-<script context="module">
+<!-- <script context="module">
 	export const load = ({ session }) => {
 		if (Object.keys(session).length !== 0) {
 			return {
@@ -8,7 +8,7 @@
 		}
 		return {};
 	};
-</script>
+</script> -->
 
 <script>
 	import { tweened } from 'svelte/motion';

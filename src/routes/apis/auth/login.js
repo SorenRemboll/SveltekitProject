@@ -10,6 +10,7 @@ export async function POST({request}){
             user_password:request_data.inputPassword
         }
     });
+    console.log(seach_data);
     if(seach_data){
 
         return{
