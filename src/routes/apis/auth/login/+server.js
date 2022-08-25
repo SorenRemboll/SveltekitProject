@@ -1,5 +1,8 @@
 import * as cookie from 'cookie';
-import { prisma } from '$lib/db'
+import { prisma } from '$lib/db';
+import { error } from '@sveltejs/kit';
+
+/** @type {import('./$types').Action} */
 
 export async function POST({request}){
     const request_data = await request.json();
@@ -11,8 +14,8 @@ export async function POST({request}){
         }
     });
     console.log(seach_data);
+    
     if(seach_data){
-
         return{
             status:200,
             body:{

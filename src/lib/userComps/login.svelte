@@ -18,7 +18,9 @@
 			method: 'POST',
 			body: JSON.stringify({ inputUserName, inputPassword })
 		});
+        console.log(conn);
 		const data = await conn.json();
+
 		if (data.searchStatus) {
 			window.location = '/dashboard';
 		}
